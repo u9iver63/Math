@@ -13,6 +13,7 @@
 
 #### Disadvantage of array
 1. **Fixed sized**: Doesn't grow the size dynamically like linked list.
+2. No **bound** checking in C.
 ## Types of Array.
 1. Single Dim Array(1-D array).
 2. Two Dim Array(2-D array).
@@ -77,7 +78,7 @@ b[0]=0,
 b[1]=0
 
 ```
-
+> Array is (internal) **pointer** variable as it store the location of base address of an array.
 
 | Address | 0x7ffc9ef427b0 | 0x7ffc9ef427b4 | 0x7ffc9ef427b8 | 0x7ffc9ef427bc |
 | ------- | -------------- | -------------- | -------------- | -------------- |
@@ -119,3 +120,112 @@ a[3]=2
 a[4]=5 
 ```
 
+### 2.Memory Representation and accessing  of array
+### 3. Array program
+```C
+#include <stdio.h>
+
+int main() {
+  int a[5], i;
+  printf("Enter the value of elemnts of array");
+  for (i = 0; i < 5; i++) {
+    printf("Enter the value for a[%d]:", i);
+    scanf("%d", &a[i]);
+  };
+  printf("\n You array\n");
+  for (i = 0; i < 5; i++) {
+    printf("%d, ", a[i]);
+  };
+  printf("\n You array in reverse order: ");
+  for (i = 4; i >= 0; i--) {
+    printf("%d, ", a[i]);
+  };
+  return 0;
+}
+
+```
+***
+```output
+49ProgramInArray01.c
+-----------------------
+Enter the value of elemnts of arrayEnter the value for a[0]:Enter the value for a[1]:Enter the value for a[2]:Enter the value for a[3]:Enter the value for a[4]:
+ You array
+10, 11, 24, 224, 234, 
+ You array in reverse order: 234, 224, 24, 11, 10, 
+```
+
+Q. WAP to read a an array of 10 integer  and count  total no of even and odd integer in the array
+
+## Pointer in C
+```C
+// 01Pointer-Basic.c
+#include <stdio.h>
+
+int main() {
+    int a=5,b=6,*p;
+    printf("%d\n",a);
+    printf("%p\n",&a);
+
+    p = &a;
+    printf("%d\n",*p);
+    printf("%p\n",p);
+
+
+    return 0;
+}
+
+```
+***
+```bash
+01Pointer-basic.c
+-----------------------
+5
+0x7ffc18f7fea8
+5
+0x7ffc18f7fea8
+
+	
+```
+***
+```C
+#include <stdio.h>
+
+int main() {
+    int a=5,b=6,*p;
+    p = &a;
+    printf("%d\n",*p);
+
+    p = &b;
+    printf("%d\n",*p);
+
+    return 0;
+}
+
+```
+***
+```bash
+
+01Pointer-basic.c
+-----------------------
+5
+6
+```
+```C
+#include <stdio.h>
+
+int main() {
+    int a=5,b=6,*p;
+    p = &a;
+    *p = 25;
+    printf("%d\n",*p);
+    return 0;
+}
+
+```
+***
+```bash
+01Pointer-basic.c
+-----------------------
+25
+
+```
